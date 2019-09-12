@@ -42,7 +42,7 @@ func (m *Master) ReserveResource(ctx context.Context, call *mesos_v1_master.Call
 
 // UnreserveResource unreserves resources dynamically on a specific mesos_v1_agent.
 func (m *Master) UnreserveResource(ctx context.Context, call *mesos_v1_master.Call_UnreserveResources) (err error) {
-	var callType mesos_v1_master.Call_Type = mesos_v1_master.Call_RESERVE_RESOURCES
+	var callType mesos_v1_master.Call_Type = mesos_v1_master.Call_UNRESERVE_RESOURCES
 	var message proto.Message = &mesos_v1_master.Call{Type: &callType, UnreserveResources: call}
 	var httpResponse *http.Response
 	httpResponse, err = m.client.makeCall(ctx, message, nil)
